@@ -136,15 +136,6 @@ public class Main {
             matrix[i][i] = 1;
         }
     }
-
-// Задание 14
-    public static int[] createArray(int len, int initialValue) {
-        int[] newArray = new int[len];
-        Arrays.fill(newArray, initialValue);
-        return newArray;
-    }
-
-
     public static void printMatrix(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -152,5 +143,11 @@ public class Main {
             }
             System.out.println();
         }
+    }
+// Задание 14
+    public static int[] createArray(int len, int initialValue) {
+        int[] newArray = new int[len];
+        Arrays.fill(newArray, initialValue);
+        return newArray;
     }
 }
