@@ -44,11 +44,11 @@ public class Main {
         System.out.println(Arrays.toString(newArray)); // 14
     }
 
-// Задание 1
+    // Задание 1
     public static void printThreeWords() {
         System.out.println("Orange\nBanana\nApple");
     }
-// Задание 2
+    // Задание 2
     public static void checkSumSign() {
         int a = 1;
         int b = -3;
@@ -59,7 +59,7 @@ public class Main {
             System.out.println("Сумма отрицательная");
         }
     }
-// Задание 3
+    // Задание 3
     public static void printColor() {
         int value = -1;
         if (value < 0) {
@@ -70,7 +70,7 @@ public class Main {
             System.out.println("Зеленый");
         }
     }
-// Задание 4
+    // Задание 4
     public static void compareNumbers() {
         int a = 8;
         int b = 9;
@@ -80,12 +80,12 @@ public class Main {
             System.out.println("a < b");
         }
     }
-// Задание 5
+    // Задание 5
     public static boolean checkSumInRange(int a, int b) {
         int sum = a + b;
         return sum >= 10 && sum <= 20;
     }
-// Задание 6
+    // Задание 6
     public static void printPositiveOrNegative(int number) {
         if (number >= 0) {
             System.out.println("Положительное число");
@@ -93,35 +93,35 @@ public class Main {
             System.out.println("Отрицательное число");
         }
     }
-// Задание 7
+    // Задание 7
     public static boolean isNegative(int number) {
         return number < 0;
     }
-// Задание 8
+    // Задание 8
     public static void printStringMultipleTimes(String str, int times) {
         for (int i = 0; i < times; i++) {
             System.out.println(str);
         }
     }
-// Задание 9
+    // Задание 9
     public static boolean isLeapYear(int year) {
         return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
     }
-// Задание 10
+    // Задание 10
     public static void swapArrayElements(int[] array) {
         for (int i = 0; i < array.length; i++) {
             array[i] = (array[i] == 0) ? 1 : 0;
         }
     }
 
-// Задание 11
+    // Задание 11
     public static void fillArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
             array[i] = i + 1;
         }
     }
 
-// Задание 12
+    // Задание 12
     public static void multiplyLessThan6(int[] array) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] < 6) {
@@ -130,7 +130,7 @@ public class Main {
         }
     }
 
-// Задание 13
+    // Задание 13
     public static void fillDiagonal(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             matrix[i][i] = 1;
@@ -144,7 +144,7 @@ public class Main {
             System.out.println();
         }
     }
-// Задание 14
+    // Задание 14
     public static int[] createArray(int len, int initialValue) {
         int[] newArray = new int[len];
         Arrays.fill(newArray, initialValue);
