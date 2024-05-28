@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+        //Сотрудники
         Employee[] employeeArray = new Employee[5];
 
         employeeArray[0] = new Employee("Ivanov Ivan", "Engineer", "ivivan@mailbox.com", "89231233112", 130000, 30);
@@ -12,5 +13,14 @@ public class Main {
             employee.printInfo();
             System.out.println();
         }
+        // Парк
+        Park park = new Park();
+
+        park.addAttraction("Roller Coaster", "10:00 - 18:00", 500);
+        park.addAttraction("Ferris Wheel", "19:00 - 21:00", 300);
+        park.addAttraction("Haunted House", "11:00 - 20:00", 400);
+
+
+        park.printAttractions();
+        }
     }
-}

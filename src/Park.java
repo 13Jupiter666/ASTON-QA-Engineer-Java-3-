@@ -1,39 +1,38 @@
-public class Park {
-    private String name;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Park(String name) {
-        this.name = name;
+public class Park {
+    private List<Attraction> attractions;
+
+    public Park() {
+        this.attractions = new ArrayList<>();
+    }
+
+    public void addAttraction(String name, String workingHours, int price) {
+        this.attractions.add(new Attraction(name, workingHours, price));
+    }
+
+    public void printAttractions() {
+        for (Attraction attraction : attractions) {
+            attraction.printInfo();
+            System.out.println();
+        }
     }
 
     public class Attraction {
-        private String attractionName;
+        private String name;
         private String workingHours;
-        private int cost;
+        private int price;
 
-        public Attraction(String attractionName, String workingHours, int cost) {
-            this.attractionName = attractionName;
+        public Attraction(String name, String workingHours, int price) {
+            this.name = name;
             this.workingHours = workingHours;
-            this.cost = cost;
+            this.price = price;
         }
 
         public void printInfo() {
-            System.out.println("Attraction Name: " + attractionName);
+            System.out.println("Attraction Name: " + name);
             System.out.println("Working Hours: " + workingHours);
-            System.out.println("Cost: " + cost);
+            System.out.println("Price: " + price);
         }
-    }
-
-    public static void main(String[] args) {
-        Park park = new Park("Wonderland");
-
-        Park.Attraction attraction1 = park.new Attraction("Roller Coaster", "10:00 - 18:00", 500);
-        Park.Attraction attraction2 = park.new Attraction("Ferris Wheel", "09:00 - 21:00", 300);
-        Park.Attraction attraction3 = park.new Attraction("Haunted House", "11:00 - 20:00", 400);
-
-        attraction1.printInfo();
-        System.out.println();
-        attraction2.printInfo();
-        System.out.println();
-        attraction3.printInfo();
-    }
-}
+    }}
