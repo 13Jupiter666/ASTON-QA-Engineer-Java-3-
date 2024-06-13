@@ -1,9 +1,11 @@
 package Exercise2;
 
 interface Shape {
-    double calculatePerimeter();
+    default double getPerimeter() {
+        throw new UnsupportedOperationException();
+    }
 
-    double calculateArea();
-
-    void printCharacteristics();
+    default double getArea() {
+        throw new UnsupportedOperationException();
+    }
 }

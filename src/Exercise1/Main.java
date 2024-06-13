@@ -17,6 +17,7 @@ public class Main {
 
         for (Cat cat : cats) {
             cat.eatFromBowl(bowl, 10);
+            System.out.println(cat.name + " сытость: " + cat.isSatiety());
         }
 
         System.out.println("Всего животных: " + Animal.getAnimalCount());
