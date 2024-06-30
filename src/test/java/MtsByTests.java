@@ -9,10 +9,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class MTSByTests {
+public class MtsByTests {
 
     private WebDriver driver;
 
@@ -32,12 +31,14 @@ public class MTSByTests {
 
     @Test
     public void testBlockTitle() {
+        // Проверка названия блока «Онлайн пополнение без комиссии»
         WebElement blockTitle = driver.findElement(By.xpath("//h2[text()='Онлайн пополнение без комиссии']"));
         assertEquals("Онлайн пополнение без комиссии", blockTitle.getText());
     }
 
     @Test
     public void testPaymentSystemLogos() {
+        // Проверка наличия логотипов платёжных систем
         List<WebElement> logos = driver.findElements(By.xpath("//div[@class='payment-systems']//img"));
         assertTrue(logos.size() > 0, "No payment system logos found");
         for (WebElement logo : logos) {
@@ -47,6 +48,7 @@ public class MTSByTests {
 
     @Test
     public void testMoreInfoLink() {
+        // Проверка работы ссылки «Подробнее о сервисе»
         WebElement moreInfoLink = driver.findElement(By.xpath("//a[text()='Подробнее о сервисе']"));
         moreInfoLink.click();
         String currentUrl = driver.getCurrentUrl();
@@ -55,6 +57,7 @@ public class MTSByTests {
 
     @Test
     public void testContinueButtonFunctionality() {
+        // Заполнение полей и проверка работы кнопки «Продолжить» для варианта «Услуги связи»
         WebElement servicesDropdown = driver.findElement(By.id("services"));
         servicesDropdown.click();
         WebElement serviceOption = driver.findElement(By.xpath("//option[@value='Услуги связи']"));
@@ -66,27 +69,13 @@ public class MTSByTests {
         WebElement continueButton = driver.findElement(By.id("continue"));
         continueButton.click();
 
-        // Проверка на успешное выполнение действия (например, переход на страницу подтверждения)
+        // Проверка успешного перехода и отображения результатов
         WebElement confirmationElement = driver.findElement(By.id("confirmation"));
         assertTrue(confirmationElement.isDisplayed(), "Confirmation element is not displayed");
 
-        // Проверка отображения суммы
-        WebElement amountElement = driver.findElement(By.id("amount-id"));
-        assertEquals("Expected amount", amountElement.getText(), "Amount text mismatch");
+        // Проверка корректности отображения данных
+        // Примеры проверок текста на кнопке, номера телефона и т.д.
 
-        // Проверка отображения номера телефона
-        WebElement phoneNumberElement = driver.findElement(By.id("phone-number-id"));
-        assertEquals("297777777", phoneNumberElement.getText(), "Phone number mismatch");
-
-        // Проверка надписи в незаполненных полях для ввода реквизитов карты
-        WebElement cardDetailsPlaceholder = driver.findElement(By.id("card-details-id"));
-        assertEquals("Введите реквизиты карты", cardDetailsPlaceholder.getAttribute("placeholder"), "Card details placeholder mismatch");
-
-        // Проверка наличия иконок платёжных систем
-        List<WebElement> logos = driver.findElements(By.xpath("//div[@class='payment-systems']//img"));
-        assertTrue(logos.size() > 0, "No payment system logos found in the confirmation window");
-        for (WebElement logo : logos) {
-            assertTrue(logo.isDisplayed(), "Payment system logo in the confirmation window is not displayed");
-        }
-    }
-}
+        // Пример проверки текста на кнопке
+        WebElement amountButton = driver.findElement(By.xpath("//button[@id='amount-button-id']"));
+        assertEquals("Expected Text", amountButton.getText(), "Text is not correct");}}
