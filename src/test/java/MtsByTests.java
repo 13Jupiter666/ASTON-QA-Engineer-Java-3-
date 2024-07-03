@@ -32,15 +32,16 @@ public class MtsByTests {
     @Test
     public void testBlockTitle() {
         // Проверка названия блока «Онлайн пополнение без комиссии»
-        WebElement blockTitle = driver.findElement(By.xpath("//h2[text()='Онлайн пополнение без комиссии']"));
-        assertEquals("Онлайн пополнение без комиссии", blockTitle.getText());
+        WebElement blockTitle = driver.findElement(By.xpath("//*[@id='pay-section']/div/div/div[2]/section/div"));
+        assertEquals("Онлайн пополнение\n" + "без комиссии\n" + "Услуги связи\n" + "Домашний интернет\n" + "Рассрочка\n" + "Задолженность\n" + "Услуги связи\n" + "+375\n" + "Руб.\n" + "Продолжить\n" + "Подробнее о сервисе", blockTitle.getText().trim());
     }
 
     @Test
     public void testPaymentSystemLogos() {
         // Проверка наличия логотипов платёжных систем
-        List<WebElement> logos = driver.findElements(By.xpath("//div[@class='payment-systems']//img"));
-        assertTrue(logos.size() > 0, "No payment system logos found");
+        WebElement logosContainer = driver.findElement(By.xpath("//*[@id='pay-section']/div/div/div[2]/section/div/div[2]/ul"));
+        List<WebElement> logos = logosContainer.findElements(By.tagName("li"));
+        assertFalse(logos.isEmpty(), "No payment system logos found");
         for (WebElement logo : logos) {
             assertTrue(logo.isDisplayed(), "Payment system logo is not displayed");
         }
@@ -49,8 +50,9 @@ public class MtsByTests {
     @Test
     public void testMoreInfoLink() {
         // Проверка работы ссылки «Подробнее о сервисе»
-        WebElement moreInfoLink = driver.findElement(By.xpath("//a[text()='Подробнее о сервисе']"));
+        WebElement moreInfoLink = driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/a"));
         moreInfoLink.click();
+
         String currentUrl = driver.getCurrentUrl();
         assertTrue(currentUrl.contains("info"), "More info link did not navigate correctly");
     }
@@ -58,24 +60,22 @@ public class MtsByTests {
     @Test
     public void testContinueButtonFunctionality() {
         // Заполнение полей и проверка работы кнопки «Продолжить» для варианта «Услуги связи»
-        WebElement servicesDropdown = driver.findElement(By.id("services"));
-        servicesDropdown.click();
-        WebElement serviceOption = driver.findElement(By.xpath("//option[@value='Услуги связи']"));
-        serviceOption.click();
-
-        WebElement phoneNumberField = driver.findElement(By.id("phone-number"));
+        WebElement phoneNumberField = driver.findElement(By.xpath("//*[@id='connection-phone']"));
         phoneNumberField.sendKeys("297777777");
 
-        WebElement continueButton = driver.findElement(By.id("continue"));
+        WebElement amountField = driver.findElement(By.xpath("//*[@id='connection-sum']"));
+        amountField.sendKeys("10");
+
+        WebElement continueButton = driver.findElement(By.xpath("//*[@id=\"pay-connection\"]/button"));
         continueButton.click();
 
-        // Проверка успешного перехода и отображения результатов
-        WebElement confirmationElement = driver.findElement(By.id("confirmation"));
+        // Проверки успешного перехода и отображения результатов
+        WebElement confirmationElement = driver.findElement(By.id("/html/body/app-root/div/div"));
         assertTrue(confirmationElement.isDisplayed(), "Confirmation element is not displayed");
 
         // Проверка корректности отображения данных
-        // Примеры проверок текста на кнопке, номера телефона и т.д.
-
-        // Пример проверки текста на кнопке
+        // Пример проверки текста на кнопке, номера телефона и т.д.
         WebElement amountButton = driver.findElement(By.xpath("//button[@id='amount-button-id']"));
-        assertEquals("Expected Text", amountButton.getText(), "Text is not correct");}}
+        assertEquals("Продолжить", amountButton.getText().trim(), "Text is not correct");
+    }
+}
