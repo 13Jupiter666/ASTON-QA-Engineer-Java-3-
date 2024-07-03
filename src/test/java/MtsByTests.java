@@ -54,7 +54,7 @@ public class MtsByTests {
         moreInfoLink.click();
 
         String currentUrl = driver.getCurrentUrl();
-        assertTrue(currentUrl.contains("info"), "More info link did not navigate correctly");
+        assertTrue(currentUrl.contains("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/"), "More info link did not navigate correctly");
     }
 
     @Test
